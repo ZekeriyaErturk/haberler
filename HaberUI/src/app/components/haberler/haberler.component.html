@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Haber Ara"
+      [(ngModel)]="search"
+      (input)="Search()"
+    />
+  </mat-form-field>
+  <mat-card *ngFor="let haber of filtered" style="margin-bottom: 0.5rem">
+    <mat-card-header>
+      <mat-card-title>{{ haber.haberBasligi }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content [routerLink]="['/haber', haber.haberId]">
+      <mat-grid-list gutterSize="0.5rem" cols="12" rowHeight="1:2">
+        <mat-grid-tile colspan="2"
+          ><img src="https://via.placeholder.com/250"
+        /></mat-grid-tile>
+        <mat-grid-tile colspan="10">
+          {{ haber.haberIcerik }}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</div>

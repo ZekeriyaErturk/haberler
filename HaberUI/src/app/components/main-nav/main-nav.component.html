@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar style="background: #673ab7; color: #fff">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="haberler">Haberler</a>
+      <a mat-list-item routerLink="makaleler">Makaleler</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Haberler</span>
+      <span class="spacer"></span>
+
+      <div *ngIf="login?.kullaniciRol === 'uye'">
+        <button [matMenuTriggerFor]="menu" mat-button *ngIf="login">
+          {{ login.kullaniciAdi }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="Logout()">Oturum Kapat</button>
+        </mat-menu>
+      </div>
+      <div *ngIf="login?.kullaniciRol === 'admin'">
+        <button [matMenuTriggerFor]="menu" mat-button *ngIf="login">
+          {{ login.kullaniciAdi }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/kullaniciliste">
+            Kullanıcılar
+          </button>
+          <button mat-menu-item routerLink="/makaleliste">Makaleler</button>
+          <button mat-menu-item routerLink="/haberliste">Haberler</button>
+          <button mat-menu-item routerLink="/yorumliste">Yorumlar</button>
+          <button mat-menu-item (click)="Logout()">Oturum Kapat</button>
+        </mat-menu>
+      </div>
+
+      <button mat-button *ngIf="!login" routerLink="/login">Oturum Aç</button>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

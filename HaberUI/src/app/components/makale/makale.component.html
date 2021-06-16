@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 style="margin-bottom: 0.2rem">{{ makale?.makaleBaslik }}</h1>
+  <small
+    >Yazar:{{ makale?.makaleYazarAdi }} Tarih:{{
+      makale?.makaleDuzTarih | date: "dd/mm/yy hh:mm"
+    }}
+  </small>
+  <div style="margin-bottom: 1rem"></div>
+  <p>{{ makale?.makaleIcerik }}</p>
+  <hr />
+  <app-yorum></app-yorum>
+</div>

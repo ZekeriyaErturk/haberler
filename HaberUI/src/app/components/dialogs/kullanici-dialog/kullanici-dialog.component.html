@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <h3>{{ dialogBaslik }}</h3>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Kullanici Adı</mat-label>
+      <input
+        matInput
+        placeholder="Kullanıcı Adı"
+        formControlName="KullaniciAdi"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Kullanici Mail</mat-label>
+      <input
+        matInput
+        placeholder="Kullanıcı Mail"
+        formControlName="KullaniciMail"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Kategori Sifre</mat-label>
+      <input
+        matInput
+        placeholder="Kullanıcı Sifre"
+        formControlName="KullaniciSifre"
+        required
+      />
+    </mat-form-field>
+  </form>
+</div>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="dialogRef.close(frm.value)"
+  [disabled]="frm.invalid"
+>
+  Kaydet</button
+>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button
+>&nbsp;

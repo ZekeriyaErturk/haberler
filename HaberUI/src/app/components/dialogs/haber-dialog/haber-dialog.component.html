@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <h3>{{ dialogBaslik }}</h3>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Haber Baslik</mat-label>
+      <input
+        matInput
+        placeholder="Haber Baslik"
+        formControlName="haberBasligi"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Haber Icerik</mat-label>
+      <textarea
+        matInput
+        placeholder="Haber Icerik"
+        formControlName="haberIcerik"
+        required
+        style="height: 120px"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Haber Image Url</mat-label>
+      <input
+        matInput
+        placeholder="Haber Img Ul"
+        formControlName="haberImgUrl"
+        required
+      />
+    </mat-form-field>
+  </form>
+</div>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="dialogRef.close(frm.value)"
+  [disabled]="frm.invalid"
+>
+  Kaydet</button
+>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button
+>&nbsp;

@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Makaleler</h1>
+  <button mat-fab color="primary" matTooltip="Kullanici Ekle" (click)="Ekle()">
+    <mat-icon aria-label="label">post_add</mat-icon>
+  </button>
+
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Makale Ara" (keyup)="Filtrele($event)" />
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="haberBasligi">
+      <mat-header-cell *matHeaderCellDef>Haber Baslik</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.haberBasligi }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="haberIcerik">
+      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.haberIcerik.substring(0, 45) }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef>İslemler</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Kategori Düzenle"
+          (click)="Duzenle(element)"
+        >
+          <mat-icon aria-label="label">edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          matTooltip="Kategori Sil"
+          (click)="Sil(element)"
+        >
+          <mat-icon aria-label="label">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    a-md-data-table-column
+    <!-- press ctrl + space to add more column snippet or delete this line -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

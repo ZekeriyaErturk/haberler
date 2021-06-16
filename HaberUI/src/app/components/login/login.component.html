@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <h2>Oturum Aç</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Kullanıcı Adı</mat-label>
+          <input
+            matInput
+            placeholder="Kullanıcı Adı"
+            type="text"
+            #kullaniciAdi
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Parola</mat-label>
+          <input
+            matInput
+            placeholder="Parola"
+            type="password"
+            #kullaniciSifre
+          />
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="OturumAc(kullaniciAdi.value, kullaniciSifre.value)"
+        >
+          Oturum Aç
+        </button>
+
+        <button style="margin-left: 0.2rem" routerLink="/register" mat-button>
+          Kayıt Ol
+        </button>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+</div>

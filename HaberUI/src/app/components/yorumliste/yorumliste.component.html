@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Yorumlar</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Yorum Ara" (keyup)="Filtrele($event)" />
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="yorumIcerik">
+      <mat-header-cell *matHeaderCellDef>Haber Baslik</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.yorumIcerik.substring(0, 45) }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="yorumKullaniciAdi">
+      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.yorumKullaniciAdi }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="yorumHaberId">
+      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.yorumHaberId === null ? "---" : element.yorumHaberId }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="yorumMakaleId">
+      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.yorumMakaleId === null ? "---" : element.yorumMakaleId }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef>İslemler</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Kategori Düzenle"
+          (click)="Duzenle(element)"
+        >
+          <mat-icon aria-label="label">edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          matTooltip="Kategori Sil"
+          (click)="Sil(element)"
+        >
+          <mat-icon aria-label="label">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

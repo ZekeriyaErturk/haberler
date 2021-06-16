@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="haberModelStoreContainer" CdmEntityContainer="haberEntities">
+    <EntitySetMapping Name="haber">
+      <EntityTypeMapping TypeName="haberModel.haber">
+        <MappingFragment StoreEntitySet="haber">
+          <ScalarProperty Name="haberId" ColumnName="haberId" />
+          <ScalarProperty Name="haberBasligi" ColumnName="haberBasligi" />
+          <ScalarProperty Name="haberIcerik" ColumnName="haberIcerik" />
+          <ScalarProperty Name="haberOlusTarih" ColumnName="haberOlusTarih" />
+          <ScalarProperty Name="haberDuzTarih" ColumnName="haberDuzTarih" />
+          <ScalarProperty Name="haberImgUrl" ColumnName="haberImgUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kullanici">
+      <EntityTypeMapping TypeName="haberModel.kullanici">
+        <MappingFragment StoreEntitySet="kullanici">
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+          <ScalarProperty Name="kullaniciMail" ColumnName="kullaniciMail" />
+          <ScalarProperty Name="kullaniciSifre" ColumnName="kullaniciSifre" />
+          <ScalarProperty Name="kullaniciRol" ColumnName="kullaniciRol" />
+          <ScalarProperty Name="kullaniciOlusTarih" ColumnName="kullaniciOlusTarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="makale">
+      <EntityTypeMapping TypeName="haberModel.makale">
+        <MappingFragment StoreEntitySet="makale">
+          <ScalarProperty Name="makaleId" ColumnName="makaleId" />
+          <ScalarProperty Name="makaleBaslik" ColumnName="makaleBaslik" />
+          <ScalarProperty Name="makaleİcerik" ColumnName="makaleİcerik" />
+          <ScalarProperty Name="makaleYazarId" ColumnName="makaleYazarId" />
+          <ScalarProperty Name="makaleOlusTarih" ColumnName="makaleOlusTarih" />
+          <ScalarProperty Name="makaleDuzTarih" ColumnName="makaleDuzTarih" />
+          <ScalarProperty Name="makaleImgUrl" ColumnName="makaleImgUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="yorum">
+      <EntityTypeMapping TypeName="haberModel.yorum">
+        <MappingFragment StoreEntitySet="yorum">
+          <ScalarProperty Name="yorumId" ColumnName="yorumId" />
+          <ScalarProperty Name="yorumIcerik" ColumnName="yorumIcerik" />
+          <ScalarProperty Name="yorumLike" ColumnName="yorumLike" />
+          <ScalarProperty Name="yorumKullaniciId" ColumnName="yorumKullaniciId" />
+          <ScalarProperty Name="yorumHaberId" ColumnName="yorumHaberId" />
+          <ScalarProperty Name="yorumMakaleId" ColumnName="yorumMakaleId" />
+          <ScalarProperty Name="yorumOlusTarih" ColumnName="yorumOlusTarih" />
+          <ScalarProperty Name="yorumDuzTarih" ColumnName="yorumDuzTarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

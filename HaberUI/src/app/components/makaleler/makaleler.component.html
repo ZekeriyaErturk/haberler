@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Makale Ara"
+      [(ngModel)]="search"
+      (input)="Search()"
+    />
+  </mat-form-field>
+  <mat-card *ngFor="let makale of filtered" style="margin-bottom: 0.5rem">
+    <mat-card-header>
+      <mat-card-title>{{ makale.makaleBaslik }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content [routerLink]="['/makale', makale.makaleId]">
+      <mat-grid-list gutterSize="0.5rem" cols="12" rowHeight="1:2">
+        <mat-grid-tile colspan="2"
+          ><img src="https://via.placeholder.com/250"
+        /></mat-grid-tile>
+        <mat-grid-tile colspan="10">
+          {{ makale.makaleIcerik }}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</div>

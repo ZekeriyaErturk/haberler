@@ -1,0 +1,58 @@
+<div class="container">
+  <h1>Kullanicilar</h1>
+  <button mat-fab color="primary" matTooltip="Kullanici Ekle" (click)="Ekle()">
+    <mat-icon aria-label="label">person_add</mat-icon>
+  </button>
+
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Kullanici Ara" (keyup)="Filtrele($event)" />
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="kullaniciAdi">
+      <mat-header-cell *matHeaderCellDef>Kullanici Adı</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.kullaniciAdi }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="kullaniciMail">
+      <mat-header-cell *matHeaderCellDef>Kullanici Mail</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.kullaniciMail }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="kullaniciRol">
+      <mat-header-cell *matHeaderCellDef>Kullanici Rol</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.kullaniciRol }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef>İslemler</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Kategori Düzenle"
+          (click)="Duzenle(element)"
+        >
+          <mat-icon aria-label="label">edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          matTooltip="Kategori Sil"
+          (click)="Sil(element)"
+        >
+          <mat-icon aria-label="label">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    a-md-data-table-column
+    <!-- press ctrl + space to add more column snippet or delete this line -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

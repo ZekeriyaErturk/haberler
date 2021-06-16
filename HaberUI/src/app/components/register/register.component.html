@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="1:1.5">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <h2>Uyelik Al</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Kullanıcı Adı</mat-label>
+          <input
+            matInput
+            placeholder="Kullanıcı Adı"
+            type="text"
+            #kullaniciAdi
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="email" #kullaniciMail />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Parola</mat-label>
+          <input
+            matInput
+            placeholder="Parola"
+            type="password"
+            #kullaniciSifre
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Parola Onay</mat-label>
+          <input
+            matInput
+            placeholder="Parola"
+            type="password"
+            #kullaniciSifreTekrar
+          />
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="
+            KullaniciOlustur(
+              kullaniciAdi.value,
+              kullaniciMail.value,
+              kullaniciSifre.value,
+              kullaniciSifreTekrar.value
+            )
+          "
+        >
+          Uye Ol
+        </button>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+</div>

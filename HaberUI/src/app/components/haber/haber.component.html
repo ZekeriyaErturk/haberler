@@ -1,0 +1,11 @@
+<div class="container">
+  <div>
+    <h2 style="margin-bottom: 0.3rem">{{ haber?.haberBasligi }}</h2>
+    <small>{{ haber?.haberDuzTarih | date: "dd/mm/yy hh:mm" }}</small>
+  </div>
+
+  <img [src]="haber?.haberImgUrl" alt="" />
+  <p>{{ haber?.haberIcerik }}</p>
+  <hr />
+  <app-yorum></app-yorum>
+</div>

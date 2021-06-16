@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="haberModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="haber">
+    <Key>
+      <PropertyRef Name="haberId" />
+    </Key>
+    <Property Name="haberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="haberBasligi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="haberIcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="haberOlusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="haberDuzTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="haberImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="yorum" Relationship="Self.FK_yorum_haber" FromRole="haber" ToRole="yorum" />
+  </EntityType>
+  <EntityType Name="kullanici">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciOlusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="makale" Relationship="Self.FK_makale_kullanici" FromRole="kullanici" ToRole="makale" />
+    <NavigationProperty Name="yorum" Relationship="Self.FK_yorum_kullanici" FromRole="kullanici" ToRole="yorum" />
+  </EntityType>
+  <EntityType Name="makale">
+    <Key>
+      <PropertyRef Name="makaleId" />
+    </Key>
+    <Property Name="makaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="makaleBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="makaleİcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="makaleYazarId" Type="Int32" Nullable="false" />
+    <Property Name="makaleOlusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="makaleDuzTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="makaleImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="kullanici" Relationship="Self.FK_makale_kullanici" FromRole="makale" ToRole="kullanici" />
+    <NavigationProperty Name="yorum" Relationship="Self.FK_yorum_makale" FromRole="makale" ToRole="yorum" />
+  </EntityType>
+  <EntityType Name="yorum">
+    <Key>
+      <PropertyRef Name="yorumId" />
+    </Key>
+    <Property Name="yorumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yorumIcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="yorumLike" Type="Int32" Nullable="false" />
+    <Property Name="yorumKullaniciId" Type="Int32" Nullable="false" />
+    <Property Name="yorumHaberId" Type="Int32" />
+    <Property Name="yorumMakaleId" Type="Int32" />
+    <Property Name="yorumOlusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="yorumDuzTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="haber" Relationship="Self.FK_yorum_haber" FromRole="yorum" ToRole="haber" />
+    <NavigationProperty Name="kullanici" Relationship="Self.FK_yorum_kullanici" FromRole="yorum" ToRole="kullanici" />
+    <NavigationProperty Name="makale" Relationship="Self.FK_yorum_makale" FromRole="yorum" ToRole="makale" />
+  </EntityType>
+  <Association Name="FK_yorum_haber">
+    <End Role="haber" Type="Self.haber" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="haber">
+        <PropertyRef Name="haberId" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="yorumHaberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_makale_kullanici">
+    <End Role="kullanici" Type="Self.kullanici" Multiplicity="1" />
+    <End Role="makale" Type="Self.makale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kullanici">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="makale">
+        <PropertyRef Name="makaleYazarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_kullanici">
+    <End Role="kullanici" Type="Self.kullanici" Multiplicity="1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kullanici">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="yorumKullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_makale">
+    <End Role="makale" Type="Self.makale" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="makale">
+        <PropertyRef Name="makaleId" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="yorumMakaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="haberEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="haber" EntityType="Self.haber" />
+    <EntitySet Name="kullanici" EntityType="Self.kullanici" />
+    <EntitySet Name="makale" EntityType="Self.makale" />
+    <EntitySet Name="yorum" EntityType="Self.yorum" />
+    <AssociationSet Name="FK_yorum_haber" Association="Self.FK_yorum_haber">
+      <End Role="haber" EntitySet="haber" />
+      <End Role="yorum" EntitySet="yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_makale_kullanici" Association="Self.FK_makale_kullanici">
+      <End Role="kullanici" EntitySet="kullanici" />
+      <End Role="makale" EntitySet="makale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_kullanici" Association="Self.FK_yorum_kullanici">
+      <End Role="kullanici" EntitySet="kullanici" />
+      <End Role="yorum" EntitySet="yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_makale" Association="Self.FK_yorum_makale">
+      <End Role="makale" EntitySet="makale" />
+      <End Role="yorum" EntitySet="yorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

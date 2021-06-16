@@ -1,0 +1,25 @@
+<div class="container">
+  <form (ngSubmit)="YorumYap()" #frm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Yorum yap"
+        [(ngModel)]="yorumIcerik"
+        name="yorumIcerik"
+      />
+    </mat-form-field>
+    <input type="submit" value="Yorum Yap" style="display: none" />
+  </form>
+  <div *ngFor="let yorum of yorumlar" style="margin-bottom: 0.5rem">
+    <p style="margin-bottom: 0.1rem">{{ yorum.yorumIcerik }}</p>
+    <small style="color: #bbb">
+      Yazan:{{ yorum.yorumKullaniciAdi }} &nbsp; Tarih:{{
+        yorum.yorumDuzTarih | date: "dd/mm/yy hh:mm"
+      }}
+      &nbsp;
+      <span style="cursor: pointer" (click)="YorumLike(yorum)"
+        >Like: {{ yorum.yorumLike }}</span
+      ></small
+    >
+  </div>
+</div>

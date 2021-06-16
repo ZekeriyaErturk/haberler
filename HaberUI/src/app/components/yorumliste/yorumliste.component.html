@@ -6,25 +6,33 @@
 
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="yorumIcerik">
-      <mat-header-cell *matHeaderCellDef>Haber Baslik</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Yorum Icerik</mat-header-cell
+      >
       <mat-cell *matCellDef="let element">
         {{ element.yorumIcerik.substring(0, 45) }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="yorumKullaniciAdi">
-      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >KullaniciAdi</mat-header-cell
+      >
       <mat-cell *matCellDef="let element">
         {{ element.yorumKullaniciAdi }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="yorumHaberId">
-      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Haber Id</mat-header-cell
+      >
       <mat-cell *matCellDef="let element">
         {{ element.yorumHaberId === null ? "---" : element.yorumHaberId }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="yorumMakaleId">
-      <mat-header-cell *matHeaderCellDef>Haber Icerik</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Makale Id</mat-header-cell
+      >
       <mat-cell *matCellDef="let element">
         {{ element.yorumMakaleId === null ? "---" : element.yorumMakaleId }}
       </mat-cell>
@@ -54,4 +62,6 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
 </div>

@@ -32,7 +32,9 @@
           {{ login.kullaniciAdi }}
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="Logout()">Oturum Kapat</button>
+          <button mat-menu-item (click)="Logout()" routerLink="/">
+            Oturum Kapat
+          </button>
         </mat-menu>
       </div>
       <div *ngIf="login?.kullaniciRol === 'admin'">
@@ -46,7 +48,9 @@
           <button mat-menu-item routerLink="/makaleliste">Makaleler</button>
           <button mat-menu-item routerLink="/haberliste">Haberler</button>
           <button mat-menu-item routerLink="/yorumliste">Yorumlar</button>
-          <button mat-menu-item (click)="Logout()">Oturum Kapat</button>
+          <button mat-menu-item (click)="Logout()" routerLink="/">
+            Oturum Kapat
+          </button>
         </mat-menu>
       </div>
 

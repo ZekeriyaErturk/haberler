@@ -1,4 +1,13 @@
 <div class="container">
+  <button
+    mat-mini-fab
+    style="margin-bottom: 0.5rem"
+    color="primary"
+    routerLink="/haberler"
+  >
+    <mat-icon aria-label="label">arrow_back</mat-icon>
+  </button>
+  <div></div>
   <div>
     <h2 style="margin-bottom: 0.3rem">{{ haber?.haberBasligi }}</h2>
     <small>{{ haber?.haberDuzTarih | date: "dd/mm/yy hh:mm" }}</small>

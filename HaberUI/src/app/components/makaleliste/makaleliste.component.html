@@ -10,19 +10,23 @@
 
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="makaleBaslik">
-      <mat-header-cell *matHeaderCellDef>Makale Baslik</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Makale Baslik</mat-header-cell
+      >
       <mat-cell *matCellDef="let element">
         {{ element.makaleBaslik }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="makaleIcerik">
-      <mat-header-cell *matHeaderCellDef>Makale Icerik</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Makale Icerik</mat-header-cell
+      >
       <mat-cell *matCellDef="let element">
         {{ element.makaleIcerik.substring(0, 45) }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="makaleYazarAdi">
-      <mat-header-cell *matHeaderCellDef>Yazar</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Yazar</mat-header-cell>
       <mat-cell *matCellDef="let element">
         {{ element.makaleYazarAdi }}
       </mat-cell>
@@ -52,4 +56,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons>
+  </mat-paginator
+  >mat-sort-header
 </div>
